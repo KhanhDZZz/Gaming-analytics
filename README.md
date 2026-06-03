@@ -16,6 +16,7 @@ Yêu cầu hệ thống
 - SQL Server 2019 hoặc cao hơn
 - Power BI Desktop (miễn phí từ Microsoft)
 - Git
+- Python 3.14
 
 Insights chính
 - Counter-Strike 2 và Dota 2 là hai game hàng đầu
