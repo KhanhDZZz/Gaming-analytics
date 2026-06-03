@@ -1,31 +1,31 @@
-# Gaming-analytics
-Phân tích dữ liệu steam games thu thập tại trang web https://steamcharts.com
+# Gaming Analytics
+Data analysis of Steam games collected from https://steamcharts.com
+
 # Gaming Analytics - SQL Server & Power BI
 
-## Mô tả
-Dự án phân tích xu hướng người chơi các trò chơi từ năm 2012-2026 sử dụng SQL Server và Power BI.
+## Description
+A data analytics project focused on analyzing player trends across various games from 2012 to 2026 using SQL Server and Power BI.
 
-## Cấu trúc dữ liệu
-- **Player_Count_Trend**: Lịch sử lượng người chơi trung bình, peak, và thay đổi
-- **Game_Details_Dim**: Thông tin chi tiết về từng trò chơi
+## Data Structure / Data Model
+- **Player_Count_Trend** (Fact/Timeseries Table): Historical data for average player count, peak concurrent users (PCU), and player fluctuations/trends.
+- **Game_Details_Dim** (Dimension Table): Detailed metadata and attributes for each game.
 
-## Cài đặt nhanh
+## Quick Start / Setup Requirements
 
-```
-Yêu cầu hệ thống
-- SQL Server 2019 hoặc cao hơn
-- Power BI Desktop (miễn phí từ Microsoft)
+System Requirements:
+- SQL Server 2019 or higher
+- Power BI Desktop (Free from Microsoft)
 - Git
 - Python 3.14
 
-Insights chính
-- Counter-Strike 2 và Dota 2 là hai game hàng đầu
-- PUBG đạt peak cao nhất nhưng đang giảm trend
-- Bongo Cat đang có momentum tích cực gần đây
-- Có rõ ràng mẫu mùa vụ cho từng game
+## Key Insights
+- **Counter-Strike 2** and **Dota 2** remain the top-performing games.
+- **PUBG** achieved the highest peak player count but is currently experiencing a downward trend.
+- **Bongo Cat** has recently gained positive momentum.
+- Strong **seasonality patterns** are clearly visible across different games.
 
-Cấu trúc Dashboard
-- Overview: KPI chính (Avg Players, Peak, Games Up/Down)
-- Trend Analysis: Line chart xu hướng qua thời gian
-- Game Comparison: So sánh hiệu suất các game
-- Detail Table: Dữ liệu chi tiết theo tháng
+## Dashboard Architecture / Dashboard Layout
+- **Overview**: Core KPIs (Avg Players, Peak Players, Games Up/Down).
+- **Trend Analysis**: Line charts visualizing player trends over time.
+- **Game Comparison**: Benchmarking performance across different games.
+- **Detail Table**: Monthly granular data breakdown.
