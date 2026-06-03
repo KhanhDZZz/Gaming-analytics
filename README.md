@@ -12,7 +12,6 @@ Dự án phân tích xu hướng người chơi các trò chơi từ năm 2012-2
 ## Cài đặt nhanh
 
 ```
-
 Yêu cầu hệ thống
 - SQL Server 2019 hoặc cao hơn
 - Power BI Desktop (miễn phí từ Microsoft)
