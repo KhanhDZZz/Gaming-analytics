@@ -1,7 +1,7 @@
 # Gaming Analytics
 Data analysis of Steam games collected from https://steamcharts.com
 
-# Gaming Analytics - SQL Server & Power BI
+# Gaming Analytics - SQL Server & Power BI & Data Scrapper
 
 ## Description
 A data analytics project focused on analyzing player trends across various games from 2012 to 2026 using SQL Server and Power BI.
