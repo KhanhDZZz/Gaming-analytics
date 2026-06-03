@@ -10,7 +10,6 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
     }
     
-    # Mức 1: Lấy danh sách game từ trang chủ
     top_url = "https://steamcharts.com/top/p.1"
     print("Mức 1: Đang quét danh sách game hàng đầu trên Steamcharts...")
     
@@ -58,12 +57,10 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
                 
             detail_soup = BeautifulSoup(res.text, "html.parser")
             
-            # --- TÌM BẢNG LỊCH SỬ (Cập nhật cơ chế tìm kiếm linh hoạt) ---
-            # Thử tìm bảng bằng class phổ biến hoặc tìm tất cả các bảng trên trang
             chart_table = detail_soup.find("table", class_="common-table") or detail_soup.find("table")
             
             if chart_table:
-                chart_rows = chart_table.find_all("tr")[1:]  # Bỏ hàng tiêu đề (Tháng, Số người chơi,...)
+                chart_rows = chart_table.find_all("tr")[1:] 
                 
                 rows_extracted = 0
                 for c_row in chart_rows:
@@ -74,7 +71,6 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
                         gain_loss_raw = c_cols[2].text.strip().replace("%", "").replace("+", "")
                         peak_players = c_cols[4].text.strip().replace(",", "")
                         
-                        # Chuyển đổi kiểu dữ liệu an toàn
                         try:
                             avg_players_num = float(avg_players) if avg_players != "-" else 0.0
                             peak_players_num = int(peak_players) if peak_players != "-" else 0
@@ -90,8 +86,7 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
                             "Peak_Players": peak_players_num
                         })
                         rows_extracted += 1
-                
-                # Nếu lấy thành công lịch sử của game này, thì mới thêm vào bảng Dimension (Game_Details_Dim)
+
                 if rows_extracted > 0:
                     app_id = game["Detail_URL"].split("/")[-1]
                     game_details_dim_list.append({
@@ -103,7 +98,7 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
                         "Current_Price": "Check Store"
                     })
             
-            # Nghỉ ngắn 1 giây để bảo vệ tiến trình cào không bị tường lửa chú ý
+
             time.sleep(1)
             
         except Exception as e:
@@ -116,11 +111,11 @@ def deep_scrape_steamcharts_fixed(limit_games=25):
     return df_trend, df_dim
 
 if __name__ == "__main__":
-    # Để kiểm tra nhanh, tôi đặt giới hạn cào thử 15 game hàng đầu (bạn có thể tăng lên tùy ý)
+
     df_trend, df_dim = deep_scrape_steamcharts_fixed(limit_games=15)
     
     if (df_trend is not None) and (not df_trend.empty):
-        # Tự động định vị thư mục Desktop bao gồm cả OneDrive
+
         home_dir = os.path.expanduser("~")
         possible_desktop_paths = [
             os.path.join(home_dir, "OneDrive", "Máy tính"),
@@ -132,7 +127,7 @@ if __name__ == "__main__":
         trend_file_path = os.path.join(desktop_path, "Player_Count_Trend.csv")
         dim_file_path = os.path.join(desktop_path, "Game_Details_Dim.csv")
         
-        # Xuất dữ liệu
+
         df_trend.to_csv(trend_file_path, index=False, encoding="utf-8-sig")
         df_dim.to_csv(dim_file_path, index=False, encoding="utf-8-sig")
         
