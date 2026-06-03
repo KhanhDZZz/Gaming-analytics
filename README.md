@@ -11,14 +11,7 @@ Dự án phân tích xu hướng người chơi các trò chơi từ năm 2012-2
 
 ## Cài đặt nhanh
 
-```sql
--- Mở SQL Server Management Studio
--- Chạy script trong scripts/SQL_Schema.sql
-
-# Chạy script PowerShell
-.\scripts\export_data.ps1
-
-Mở file: powerbi/Gaming_Analytics.pbix
+```
 
 Yêu cầu hệ thống
 - SQL Server 2019 hoặc cao hơn
