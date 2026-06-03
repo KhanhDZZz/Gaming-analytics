@@ -11,7 +11,6 @@ Dự án phân tích xu hướng người chơi các trò chơi từ năm 2012-2
 
 ## Cài đặt nhanh
 
-### 1. Tạo Database SQL Server
 ```sql
 -- Mở SQL Server Management Studio
 -- Chạy script trong scripts/SQL_Schema.sql
